@@ -29,23 +29,39 @@ const checkYuGiOh = (n) => {
         if (n > 0) {
 
             /**
-             * An array of numbers from  to n
-             * @type {Array<string|number>}
+             * An array of numbers from 0 to n
+             * @type {Array<number>}
              */
             const arr = [];
 
-            (new Array(n)).forEach((_, index) => {
+            /**
+             * Temporary array for iteration
+             * @type {number[]}
+             */
+            const iterArray = [];
+
+            for (let i = 0; i < n; i++) {
+                iterArray.push(i + 1);
+            }
+
+            iterArray.forEach((_, index) => {
 
                 arr.push(index + 1);
 
             });
+
+            /**
+             * The array to be returned
+             * @type {Array<string|number>}
+             */
+            const retValArray = [];
 
             arr.forEach((item, index) => {
 
                 /**
                  * A temporary array of strings for formng the sequence e.g 'yu-gi-oh'
                  * ```
-                 * Todo: Find an optimied solution, creating a new array on each iteration wil hamper performnce ny a couple of miliseconds
+                 * Todo: Find an optimized solution, creating a new array on each iteration wil hamper performnce ny a couple of miliseconds
                  * ```
                  * @type {string[]}
                  */
@@ -53,28 +69,30 @@ const checkYuGiOh = (n) => {
 
                 if (!Number.isNaN(item)) {
 
-                    if (n % 2 == 0) {
+                    if (n % 2 === 0) {
                         tempArr.push(replace2);
                     }
 
-                    if (n % 3 == 0) {
+                    if (n % 3 === 0) {
                         tempArr.push(replace3);
                     }
 
-                    if (n % 5 == 0) {
+                    if (n % 5 === 0) {
                         tempArr.push(replace5);
                     }
 
-                    if (tempArr.length) {
+                    if (tempArr.length > 0) {
                         const str = tempArr.join('-');
-                        arr[index] = str;
+                        retValArray[index] = str;
+                    } else {
+                        retValArray[index] = item;
                     }
 
                 }
 
             });
 
-            return arr;
+            return retValArray;
 
         } else throw new Error('Number must be greater than 0');
 
@@ -90,4 +108,4 @@ const checkYuGiOh = (n) => {
 
 }
 
-console.log(checkYuGiOh('-1'));
+console.log(checkYuGiOh(5));

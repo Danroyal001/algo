@@ -6,6 +6,7 @@
  * e.g 10 === "yu-oh", 30 === "yu-gi-oh"
  * - perform checks on your input and return `invalid parameter: ${parameter}` if an invalid parameter - i.e. a string that can't be converted to a number or another data type - is passed. 
  * @param {number} n Number of items in te array to be created
+ * @name checkYuGiOh
  * @returns {(string|number)[]} An array of strings and numbers
  */
 const checkYuGiOh = (n) => {
@@ -65,24 +66,24 @@ const checkYuGiOh = (n) => {
                  * ```
                  * @type {string[]}
                  */
-                const tempArr = [];
+                const _tempArr = [];
 
                 if (!Number.isNaN(item)) {
 
                     if (n % 2 === 0) {
-                        tempArr.push(replace2);
+                        _tempArr.push(replace2);
                     }
 
                     if (n % 3 === 0) {
-                        tempArr.push(replace3);
+                        _tempArr.push(replace3);
                     }
 
                     if (n % 5 === 0) {
-                        tempArr.push(replace5);
+                        _tempArr.push(replace5);
                     }
 
-                    if (tempArr.length > 0) {
-                        const str = tempArr.join('-');
+                    if (_tempArr.length > 0) {
+                        const str = _tempArr.join('-');
                         retValArray[index] = str;
                     } else {
                         retValArray[index] = item;
@@ -108,4 +109,4 @@ const checkYuGiOh = (n) => {
 
 }
 
-console.log(checkYuGiOh(5));
+console.log(checkYuGiOh(10));

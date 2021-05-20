@@ -1,10 +1,15 @@
 /**
+ * 
  * This function (named "checkYuGiOh") takes a number, n, as an argument, creates an array of numbers from 1 to n and replaces multiples of 2, 3, and 5 with "yu", "gi" and "oh", then returns the resulting array.
  * 
  * Note:
  * - for numbers that have multiple factors, use hyphens as separators
  * e.g 10 === "yu-oh", 30 === "yu-gi-oh"
  * - perform checks on your input and return `invalid parameter: ${parameter}` if an invalid parameter - i.e. a string that can't be converted to a number or another data type - is passed. 
+ * Usage:
+ *  ```javascript
+ * console.log(checkYuGiOh(30));
+ * ```
  * @param {number} n Number of items in te array to be created
  * @name checkYuGiOh
  * @returns {(string|number)[]} An array of strings and numbers
@@ -70,15 +75,15 @@ const checkYuGiOh = (n) => {
 
                 if (!Number.isNaN(item)) {
 
-                    if (n % 2 === 0) {
+                    if (item % 2 === 0) {
                         _tempArr.push(replace2);
                     }
 
-                    if (n % 3 === 0) {
+                    if (item % 3 === 0) {
                         _tempArr.push(replace3);
                     }
 
-                    if (n % 5 === 0) {
+                    if (item % 5 === 0) {
                         _tempArr.push(replace5);
                     }
 
@@ -109,4 +114,5 @@ const checkYuGiOh = (n) => {
 
 }
 
-console.log(checkYuGiOh(10));
+// run it
+console.log(checkYuGiOh(30));
